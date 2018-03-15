@@ -25,10 +25,19 @@ for (n in 1:length(data$US)) {
 }
 data
 
+colnames(data)
+
 install.packages('ggplot2')
 library(ggplot2)
+
+ggplot(data, aes(x = Population, y = Sales)) +
+  geom_point()
+
+ggplot(data, aes(x = Population, y = Sales)) + 
+  geom_point(aes(color = Price)) 
 
 ggplot(data, aes(x = Population, y = Sales)) + 
   geom_point(aes(color = ShelveLoc)) 
 
-colnames(data)
+
+
