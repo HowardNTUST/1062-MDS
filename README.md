@@ -25,3 +25,4 @@ Howard Chung / @[HowardNTUST](https://github.com/HowardNTUST)
 
 Zino Lin / @[linzino](https://github.com/linzion)
 
+[link](http://vincentarelbundock.github.io/Rdatasets/csv/ISLR/Carseats.csv) 
