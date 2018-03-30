@@ -20,6 +20,7 @@ function_load = function()
   if(!require(tidyverse)){install.packages("tidyverse"); require(tidyverse)}
   if(!require(parallel)){install.packages("parallel"); require(parallel)}
   if(!require(plyr)){install.packages("plyr"); require(plyr)}  
+  if(!require(progress)){install.packages("progress"); require(progress)}  
 }
 
 function_load()
