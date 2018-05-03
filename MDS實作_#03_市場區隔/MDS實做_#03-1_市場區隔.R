@@ -2,11 +2,13 @@
 # 載入library
 library(dplyr)
 library(reshape2)
+library(tidyverse)
 library(ggplot2)
 library(stringr)
-source('MDS1062.R')
-setwd('/home/slave1/git/1062-NTUST-MDS/new')
-load("~/git/1062-NTUST-MDS/new/all.RData")
+library(plyr)
+# source('MDS1062.R')
+setwd('C:/Users/howar/Desktop/MDS實作_#03_市場區隔')
+load("C:/Users/howar/Desktop/MDS實作_#03_市場區隔/allnew.RData")
 # all_data = read.csv('all_data.csv')
 '
 product_name, attribute
@@ -125,7 +127,7 @@ ggplot(RF_newdata, aes(x=frequency)) +
 # 頻率的Hc
 'HC解釋'
 distance_select <- dist(scale(RF_newdata$frequency), method = "euclidean")
-hc <- hclust(distance_select, method = method_used)
+hc <- hclust(distance_select, method = 'ward.D')
 # Cut tree into 4 groups
 sub_grp <- cutree(hc, k = 6)
 RF_newdata$fre_split = sub_grp

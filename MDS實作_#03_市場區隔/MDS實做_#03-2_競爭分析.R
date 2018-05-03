@@ -9,9 +9,8 @@ if(!require(markovchain)){install.packages("markovchain"); require(markovchain)}
 if(!require(visNetwork)){install.packages("visNetwork"); require(visNetwork)} 
 if(!require(expm)){install.packages("expm"); require(expm)} 
 if(!require(stringr)){install.packages("stringr"); require(stringr)} 
-
-setwd('/home/slave1/git/1062-NTUST-MDS/new')
-load("~/git/1062-NTUST-MDS/new/allnew.RData")
+setwd('C:/Users/howar/Desktop/MDS實作_#03_市場區隔')
+load("C:/Users/howar/Desktop/MDS實作_#03_市場區隔/allnew.RData")
 ### all_data select  ###
 name <- list()
 name <- readLines("MDS實做_#03_資料檔_Brand.txt", encoding = "UTF-8")
@@ -32,6 +31,7 @@ all_data_select$conversion = ifelse(all_data_select$product_name == '美膚泥�
 #   dplyr::arrange(author_id,comment_publish) %>%
 #   ungroup()
 ##### splitting paths #####
+all_data_select=read.csv('all_data_select.csv', stringsAsFactors = F)
 all_data_select = all_data_select %>%  
   dplyr::arrange(author_id, comment_publish) %>%
   ungroup()
@@ -82,6 +82,7 @@ df_path_1_clean <- ggg %>%
 '
 
 # 這邊用的是多channel的model
+df_path_1_clean$product_name = gsub('潔膚冰河泥 Epoch Glacial Marine Mud','潔膚冰河泥',df_path_1_clean$product_name)
 df_all_paths_compl <- df_path_1_clean %>%
   group_by(author_id) %>%
   dplyr::summarise(path = paste(product_name, collapse = ' > '),
@@ -135,7 +136,6 @@ visNetwork(nodes,
   visIgraphLayout(randomSeed = 123) %>%
   visNodes(size = 5) %>%
   visOptions(highlightNearest = TRUE)
-
 
 
 ##### modeling states and conversions #####
